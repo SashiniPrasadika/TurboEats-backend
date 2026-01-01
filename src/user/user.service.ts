@@ -1,26 +1,65 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
+import { InjectRepository } from '@nestjs/typeorm';
+import { User } from './entities/user.entity';
+import { Repository } from 'typeorm';
 
 @Injectable()
 export class UserService {
-  create(createUserDto: CreateUserDto) {
-    return 'This action adds a new user';
+  constructor(
+    @InjectRepository(User)
+    private readonly userRepository: Repository<User>,
+  ) {}
+
+  // create user
+  async create(createUserDto: CreateUserDto): Promise<User> {
+    const { email } = createUserDto;
+
+    //check if email exist
+    const existingUser = await this.userRepository.findOne({
+      where: { email },
+    });
+
+    if (existingUser) {
+      throw new BadRequestException({ message: 'Email already exist' });
+    }
+
+    const newUser = this.userRepository.create(createUserDto);
+    return await this.userRepository.save(newUser);
   }
 
-  findAll() {
-    return `This action returns all user`;
+  //read all user
+  async findAll(): Promise<User[]> {
+    return await this.userRepository.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} user`;
+  //read single user
+  async findOne(id: number): Promise<User> {
+    const user = await this.userRepository.findOne({ where: { id } });
+    if (!user) {
+      throw new BadRequestException({ message: 'User not found' });
+    }
+    return user;
   }
 
-  update(id: number, updateUserDto: UpdateUserDto) {
-    return `This action updates a #${id} user`;
+  //update user
+  async update(id: number, updateUserDto: UpdateUserDto): Promise<User> {
+    const user = await this.findOne(id);
+    if (!user) {
+      throw new BadRequestException({ message: 'User not found' });
+    }
+
+    const updateUser = this.userRepository.merge(user, updateUserDto);
+    return await this.userRepository.save(updateUser);
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} user`;
+  //delete user
+  async remove(id: number): Promise<User> {
+    const user = await this.findOne(id);
+    if (!user) {
+      throw new BadRequestException({ message: 'User not found' });
+    }
+    return await this.userRepository.remove(user);
   }
 }

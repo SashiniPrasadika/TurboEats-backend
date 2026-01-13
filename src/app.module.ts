@@ -13,11 +13,13 @@ import { Restaurant } from './restaurants/entities/restaurant.entity';
 import { RestaurentCategoryModule } from './restaurent_category/restaurent_category.module';
 import { RestaurantCategory } from './restaurent_category/entities/restaurent_category.entity';
 
-// ✅ IMPORT USER MODULE (SINGULAR)
+// ✅ USER MODULE & ENTITY
 import { UserModule } from './user/user.module';
-
-// ✅ IMPORT USER ENTITY
 import { User } from './user/entities/user.entity';
+
+// ✅ USER ADDRESS MODULE & ENTITY
+import { UserAddressModule } from './user-address/user-address.module';
+import { UserAddress } from './user-address/entities/user-address.entity';
 
 @Module({
   imports: [
@@ -38,7 +40,8 @@ import { User } from './user/entities/user.entity';
           Category,
           Restaurant,
           RestaurantCategory,
-          User, // ✅ ADD USER ENTITY
+          User,          // ✅ USER ENTITY
+          UserAddress,   // ✅ USER ADDRESS ENTITY
         ],
         synchronize: true,
       }),
@@ -48,7 +51,8 @@ import { User } from './user/entities/user.entity';
     RestaurantsModule,
     RestaurentCategoryModule,
 
-    UserModule, // ✅ ADD USER MODULE
+    UserModule,        // ✅ USER MODULEnpm run
+    UserAddressModule, // ✅ USER ADDRESS MODULE
   ],
   controllers: [AppController],
   providers: [AppService],

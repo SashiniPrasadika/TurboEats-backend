@@ -21,6 +21,10 @@ import { User } from './user/entities/user.entity';
 import { UserAddressModule } from './user-address/user-address.module';
 import { UserAddress } from './user-address/entities/user-address.entity';
 
+// ✅ MENU ITEMS MODULE & ENTITY
+import { MenuItemsModule } from './menu_items/menu_items.module';
+import { MenuItem } from './menu_items/entities/menu_item.entity';
+
 @Module({
   imports: [
     ConfigModule.forRoot(),
@@ -42,6 +46,7 @@ import { UserAddress } from './user-address/entities/user-address.entity';
           RestaurantCategory,
           User,          // ✅ USER ENTITY
           UserAddress,   // ✅ USER ADDRESS ENTITY
+          MenuItem,      // ✅ MENU ITEM ENTITY
         ],
         synchronize: true,
       }),
@@ -50,9 +55,9 @@ import { UserAddress } from './user-address/entities/user-address.entity';
     CategoriesModule,
     RestaurantsModule,
     RestaurentCategoryModule,
-
-    UserModule,        // ✅ USER MODULEnpm run
-    UserAddressModule, // ✅ USER ADDRESS MODULE
+    UserModule,        
+    UserAddressModule, 
+    MenuItemsModule,   // ✅ MENU ITEMS MODULE
   ],
   controllers: [AppController],
   providers: [AppService],

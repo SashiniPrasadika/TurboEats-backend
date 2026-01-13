@@ -40,7 +40,10 @@ import { Cart } from './carts/entities/cart.entity';
 // ✅ CART ITEMS MODULE & ENTITY
 import { CartItemsModule } from './cart-items/cart-items.module';
 import { CartItem } from './cart-items/entities/cart-item.entity';
+
+// ✅ REVIEWS MODULE & ENTITY
 import { ReviewsModule } from './reviews/reviews.module';
+import { Review } from './reviews/entities/review.entity';
 
 @Module({
   imports: [
@@ -68,6 +71,7 @@ import { ReviewsModule } from './reviews/reviews.module';
           OrderItem,  // ✅ ORDER ITEM ENTITY
           Cart,       // ✅ CART ENTITY
           CartItem,   // ✅ CART ITEM ENTITY
+          Review,     // ✅ REVIEW ENTITY
         ],
         synchronize: true,
       }),
@@ -83,7 +87,7 @@ import { ReviewsModule } from './reviews/reviews.module';
     OrderItemsModule,
     CartsModule,
     CartItemsModule,
-    ReviewsModule, // ✅ CART ITEMS MODULE
+    ReviewsModule, // ✅ REVIEWS MODULE
   ],
   controllers: [AppController],
   providers: [AppService],

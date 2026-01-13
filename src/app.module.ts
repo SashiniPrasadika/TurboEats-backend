@@ -10,11 +10,14 @@ import { Category } from './categories/entities/category.entity';
 import { RestaurantsModule } from './restaurants/restaurants.module';
 import { Restaurant } from './restaurants/entities/restaurant.entity';
 
-// ✅ FIXED: use ONLY ONE correct restaurant-category module
 import { RestaurentCategoryModule } from './restaurent_category/restaurent_category.module';
-
-// ✅ FIXED: correct entity import path & name
 import { RestaurantCategory } from './restaurent_category/entities/restaurent_category.entity';
+
+// ✅ IMPORT USER MODULE (SINGULAR)
+import { UserModule } from './user/user.module';
+
+// ✅ IMPORT USER ENTITY
+import { User } from './user/entities/user.entity';
 
 @Module({
   imports: [
@@ -31,11 +34,11 @@ import { RestaurantCategory } from './restaurent_category/entities/restaurent_ca
         password: configService.get('DB_PASSWORD'),
         database: configService.get('DB_DATABASE'),
 
-        // ✅ FIXED: register correct restaurant-category entity
         entities: [
           Category,
           Restaurant,
           RestaurantCategory,
+          User, // ✅ ADD USER ENTITY
         ],
         synchronize: true,
       }),
@@ -43,9 +46,9 @@ import { RestaurantCategory } from './restaurent_category/entities/restaurent_ca
 
     CategoriesModule,
     RestaurantsModule,
-
-    // ✅ FIXED: correct module name
     RestaurentCategoryModule,
+
+    UserModule, // ✅ ADD USER MODULE
   ],
   controllers: [AppController],
   providers: [AppService],

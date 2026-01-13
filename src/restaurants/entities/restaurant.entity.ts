@@ -113,4 +113,8 @@ export class Restaurant {
 
   @Column({ nullable: true })
   image_url: string;
+
+
+
+  
 }

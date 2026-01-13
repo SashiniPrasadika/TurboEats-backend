@@ -49,6 +49,10 @@ import { Review } from './reviews/entities/review.entity';
 import { DeliveryPersonAvailabilityModule } from './delivery_person_availability/delivery_person_availability.module';
 import { DeliveryPersonAvailability } from './delivery_person_availability/entities/delivery_person_availability.entity';
 
+// ✅ PROMOTIONS MODULE & ENTITY
+import { PromotionsModule } from './promotions/promotions.module';
+import { Promotion } from './promotions/entities/promotion.entity';
+
 @Module({
   imports: [
     ConfigModule.forRoot(),
@@ -76,7 +80,8 @@ import { DeliveryPersonAvailability } from './delivery_person_availability/entit
           Cart,                      // ✅ CART ENTITY
           CartItem,                  // ✅ CART ITEM ENTITY
           Review,                    // ✅ REVIEW ENTITY
-          DeliveryPersonAvailability // ✅ DELIVERY PERSON AVAILABILITY ENTITY
+          DeliveryPersonAvailability,// ✅ DELIVERY PERSON AVAILABILITY ENTITY
+          Promotion                  // ✅ PROMOTION ENTITY
         ],
         synchronize: true,
       }),
@@ -93,7 +98,8 @@ import { DeliveryPersonAvailability } from './delivery_person_availability/entit
     CartsModule,
     CartItemsModule,
     ReviewsModule,
-    DeliveryPersonAvailabilityModule, // ✅ DELIVERY PERSON AVAILABILITY MODULE
+    DeliveryPersonAvailabilityModule,
+    PromotionsModule, // ✅ PROMOTIONS MODULE
   ],
   controllers: [AppController],
   providers: [AppService],

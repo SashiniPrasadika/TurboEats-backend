@@ -29,6 +29,10 @@ import { MenuItem } from './menu_items/entities/menu_item.entity';
 import { OrdersModule } from './orders/orders.module';
 import { Order } from './orders/entities/order.entity';
 
+// ✅ ORDER ITEMS MODULE & ENTITY
+import { OrderItemsModule } from './order_items/order_items.module';
+import { OrderItem } from './order_items/entities/order_item.entity';
+
 @Module({
   imports: [
     ConfigModule.forRoot(),
@@ -51,7 +55,8 @@ import { Order } from './orders/entities/order.entity';
           User,
           UserAddress,
           MenuItem,
-          Order, // ✅ ORDER ENTITY
+          Order,      // ✅ ORDER ENTITY
+          OrderItem,  // ✅ ORDER ITEM ENTITY
         ],
         synchronize: true,
       }),
@@ -63,7 +68,8 @@ import { Order } from './orders/entities/order.entity';
     UserModule,
     UserAddressModule,
     MenuItemsModule,
-    OrdersModule, // ✅ ORDERS MODULE
+    OrdersModule,
+    OrderItemsModule, // ✅ ORDER ITEMS MODULE
   ],
   controllers: [AppController],
   providers: [AppService],

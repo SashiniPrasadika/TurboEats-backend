@@ -25,6 +25,10 @@ import { UserAddress } from './user-address/entities/user-address.entity';
 import { MenuItemsModule } from './menu_items/menu_items.module';
 import { MenuItem } from './menu_items/entities/menu_item.entity';
 
+// ✅ ORDERS MODULE & ENTITY
+import { OrdersModule } from './orders/orders.module';
+import { Order } from './orders/entities/order.entity';
+
 @Module({
   imports: [
     ConfigModule.forRoot(),
@@ -44,9 +48,10 @@ import { MenuItem } from './menu_items/entities/menu_item.entity';
           Category,
           Restaurant,
           RestaurantCategory,
-          User,          // ✅ USER ENTITY
-          UserAddress,   // ✅ USER ADDRESS ENTITY
-          MenuItem,      // ✅ MENU ITEM ENTITY
+          User,
+          UserAddress,
+          MenuItem,
+          Order, // ✅ ORDER ENTITY
         ],
         synchronize: true,
       }),
@@ -55,9 +60,10 @@ import { MenuItem } from './menu_items/entities/menu_item.entity';
     CategoriesModule,
     RestaurantsModule,
     RestaurentCategoryModule,
-    UserModule,        
-    UserAddressModule, 
-    MenuItemsModule,   // ✅ MENU ITEMS MODULE
+    UserModule,
+    UserAddressModule,
+    MenuItemsModule,
+    OrdersModule, // ✅ ORDERS MODULE
   ],
   controllers: [AppController],
   providers: [AppService],
